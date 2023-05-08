@@ -1,0 +1,30 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+
+configMapGenerator:
+  - name: configmap-with-envvariables
+    envs:
+      - myconfigmap.properties
+  - name: configmap-with-files
+    envs:
+      - myconfigmap.properties
+  - name: configmap-with-literals
+    literals:
+      - myvar1=20
+      - mystr1=dvstech
+
+secretGenerator:
+  - name: secret-with-envvariables
+    envs:
+      - secret.txt
+  - name: secret-with-files
+    envs:
+      - secret.txt
+  - name: secret-with-literals
+    literals:
+      - myvar1=20
+      - mystr1=dvstech
+
+generatorOptions:
+  disableNameSuffixHash: true
